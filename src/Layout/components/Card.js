@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function Card({prompt, answer, handleNext, value}){
+function Card({prompt, answer, handleNext}){
     const [flipped, setFlipped] = useState(false);
     function flip(){
         setFlipped(!flipped);
@@ -21,7 +21,6 @@ function Card({prompt, answer, handleNext, value}){
                             Next
                         </button>
                     </React.Fragment>
-                    
                     
                 ):(
                     <React.Fragment>

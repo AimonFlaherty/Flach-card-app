@@ -1,7 +1,6 @@
 import React from "react";
 import {useHistory} from "react-router-dom";
 
-
 function CreateBtn(){
     const history = useHistory();
     return (
@@ -10,6 +9,5 @@ function CreateBtn(){
         </button>
         );
 }
-
 
 export default CreateBtn;

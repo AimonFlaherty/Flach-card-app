@@ -21,7 +21,7 @@ function CreateCard(){
         url: "/"
     },{
         title: deck?.name,
-        url: url.slice(0, url.length-9)
+        url: url.slice(0, url.length-10)
     },{
         title: "Add Card",
         url: url

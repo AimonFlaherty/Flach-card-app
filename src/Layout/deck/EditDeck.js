@@ -10,18 +10,14 @@ function EditDeck(){
     const history = useHistory();
     const params = useParams();
     const {url} = useRouteMatch();
-    //const [initialDeck, setInitialDeck] = useState({...deck});
-    
-    //const [deck, setDeck] = useState({});
     const [formData, setFormData] = useState();
-    //console.log(params.deckId);
-
+    
     const banner = [{
         title: "Home",
         url: "/"
     },{
         title: formData?.name,
-        url: url.slice(0, url.length-4)
+        url: url.slice(0, url.length-5)
     },{
         title: "Edit",
         url: url
@@ -60,10 +56,7 @@ function EditDeck(){
         
         
         async function logDeck(){
-            //console.log(formData);
-            const logDeck = await updateDeck(formData);
-            //console.log(logDeck);
-            
+            const logDeck = await updateDeck(formData);            
         }
         logDeck();
         history.push(`/decks/${formData.id}`);

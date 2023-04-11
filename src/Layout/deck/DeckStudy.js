@@ -16,7 +16,7 @@ function DeckStudy(){
         url: "/"
     },{
         title: deck?.name,
-        url: url.slice(0, url.length-5)
+        url: url.slice(0, url.length-6)
     },{
         title: "Study",
         url: url

@@ -54,9 +54,9 @@ function DeckView(){
                 <div className="row"> <p>{deck?.description}</p> </div>
                     
                 <div className="row">
-                    <button className="btn btn-secondary" onClick={()=>history.push(`${url}edit`)}>edit </button>
-                    <button className="btn btn-primary" onClick={()=>history.push(`/decks/${deck.id}/study`)}>study </button>
-                    <button className="btn btn-primary" onClick={()=>history.push(`${url}cards/new`)}>add cards </button>
+                    <button className="btn btn-secondary" onClick={()=>history.push(`${url}/edit`)}>edit </button>
+                    <button className="btn btn-primary" onClick={()=>history.push(`${url}/study`)}>study </button>
+                    <button className="btn btn-primary" onClick={()=>history.push(`${url}/cards/new`)}>add cards </button>
                     <button className="btn btn-danger" onClick={handleDelete}>delete </button>
                 </div>
                 
