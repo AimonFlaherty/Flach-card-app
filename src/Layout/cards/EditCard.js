@@ -28,7 +28,7 @@ function EditCard(){
             try{
                 //setFormData((await readDeck(params.deckId)).cards[params.cardId]);
                 setDeck(await readDeck(params.deckId));
-                setFormData(deck);
+                setFormData(deck.cards[params.cardId]);
             }
             catch(error){
                 console.log("Abort error");
