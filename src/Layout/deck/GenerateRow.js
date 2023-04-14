@@ -18,7 +18,7 @@ function GenerateRow({id, front, back, index, url}){
                 <div className="container">
                     <p className="col-12">{back}</p>
                     <div>
-                        <button className="btn btn-secondary" onClick={()=> history.push(`${url}/cards/${index}/edit`)}>edit</button>
+                        <button className="btn btn-secondary" onClick={()=> history.push(`${url}/cards/${id}/edit`)}>edit</button>
                         <button className="btn btn-danger"onClick={handleDelete}>delete</button>
                     </div>
                 </div>

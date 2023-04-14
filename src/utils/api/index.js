@@ -192,7 +192,7 @@ export async function readCard(cardId, signal) {
  *  optional AbortController.signal
  * @returns {Promise<Error|*>}
  *  a promise that resolves to the updated card.
- */
+ */ 
 export async function updateCard(updatedCard, signal) {
   const url = `${API_BASE_URL}/cards/${updatedCard.id}`;
   const options = {

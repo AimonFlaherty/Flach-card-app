@@ -55,13 +55,17 @@ function DeckStudy(){
             {cardLength < 3 ? (
                 <div>
                     <h2 >Not enough cards</h2>
-                    <button className="btn btn-primary" onClick={()=>history.push(`decks/${params.deckId}/cards/new`)}>
+                    <button className="btn btn-primary" onClick={()=>history.push(`cards/new`)}>
                         Add Cards
                     </button>
                 </div>
             
             ):(
-                <Card prompt={card?.front} answer={card?.back} handleNext={handleNext} value ={pointer} />
+                <React.Fragment>
+                    <h1>Card {pointer + 1} of {cardLength}</h1>
+                    <Card prompt={card?.front} answer={card?.back} handleNext={handleNext} value ={pointer} />
+                </React.Fragment>
+                
                 
             )}
            

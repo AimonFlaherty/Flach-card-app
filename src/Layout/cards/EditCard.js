@@ -1,7 +1,7 @@
 import React from "react";
 import {useState, useEffect} from "react";
 import {useHistory, useParams, useRouteMatch} from "react-router-dom";
-import { updateCard, readDeck } from "../../utils/api";
+import { updateCard, readDeck, readCard } from "../../utils/api";
 import BannerPath from "../components/BannerPath";
 import Form from "../components/Form";
 
@@ -25,17 +25,13 @@ function EditCard(){
     }];
     
     useEffect(()=>{
-        async function loadDeck(){
-            try{
-                setFormData((await readDeck(params.deckId)).cards[params.cardId]);
-                setDeck(await readDeck(params.deckId));
-                //setFormData(deck.cards[params.cardId]);
-            }
-            catch(error){
-                console.log("Abort error");
-            }
-        }
-        loadDeck();
+        readDeck(params.deckId)
+      .then(setDeck)
+      //.then((deck)=>setFormData(deck.cards[params.cardId]))
+      .catch((error)=>console.log(error.message));
+     readCard(params.cardId)
+      .then(setFormData)
+      .catch((error)=>console.log(error.message));
     }, []);
     
     
