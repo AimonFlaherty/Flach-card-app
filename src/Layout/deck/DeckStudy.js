@@ -44,8 +44,6 @@ function DeckStudy(){
             const confirm = window.confirm("Restart cards? \n\n Click 'cancle' to return home.");
             confirm ? setPointer(0): history.push("/");
         }
-        
-        
     }
     
     
@@ -53,7 +51,7 @@ function DeckStudy(){
     return(
         <React.Fragment>
             <BannerPath list ={banner} />
-            <h1>{deck?.name}: Study</h1>
+            <h1>Study: {deck?.name} </h1>
             {cardLength < 3 ? (
                 <div>
                     <h2 >Not enough cards</h2>

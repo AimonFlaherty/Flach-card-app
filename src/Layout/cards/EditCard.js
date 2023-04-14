@@ -3,6 +3,7 @@ import {useState, useEffect} from "react";
 import {useHistory, useParams, useRouteMatch} from "react-router-dom";
 import { updateCard, readDeck } from "../../utils/api";
 import BannerPath from "../components/BannerPath";
+import Form from "../components/Form";
 
 function EditCard(){
     const history = useHistory();
@@ -26,9 +27,9 @@ function EditCard(){
     useEffect(()=>{
         async function loadDeck(){
             try{
-                //setFormData((await readDeck(params.deckId)).cards[params.cardId]);
+                setFormData((await readDeck(params.deckId)).cards[params.cardId]);
                 setDeck(await readDeck(params.deckId));
-                setFormData(deck.cards[params.cardId]);
+                //setFormData(deck.cards[params.cardId]);
             }
             catch(error){
                 console.log("Abort error");
@@ -37,12 +38,7 @@ function EditCard(){
         loadDeck();
     }, []);
     
-    const handleChange = ({ target }) => {
-        setFormData({
-          ...formData,
-          [target.name]: target.value,
-        });
-    };
+    
     
     const handleSubmit = (event)=>{
         event.preventDefault();
@@ -53,48 +49,21 @@ function EditCard(){
         logCard();
         history.push(`/decks/${params.deckId}`);
     }
+
+    const handleChange = ({ target }) => {
+        setFormData({
+          ...formData,
+          [target.name]: target.value,
+        });
+    };
+
     return (
         <React.Fragment>
             <BannerPath list={banner} />
             <div className="container">
                 <div className="row"> <h1>Edit Card</h1> </div>
                 <div className="row">
-                    <form className="w-100" onSubmit={handleSubmit}>
-                        <div className="form-group">
-                            <label>
-                                Front
-                            </label>
-                            <textarea 
-                                className="form-control"
-                                name="front"
-                                rows="2"
-                                onChange={handleChange}
-                                value={formData.front}
-                            ></textarea>
-                        </div>
-                        
-                        <div className="form-group">
-                            <label>
-                                Back
-                            </label>
-                            <textarea
-                                className="form-control"
-                                name="back"
-                                rows="2"
-                                onChange={handleChange}
-                                value={formData.back}
-                            ></textarea>
-                        </div>
-                        
-                        <button 
-                            type="button" 
-                            className="btn btn-secondary"
-                            onClick={()=> history.push(`/decks/${params.deckId}`)}
-                        >
-                            Done
-                        </button>
-                        <button type="submit" className="btn btn-primary">Save</button>
-                    </form>
+                    <Form handleSubmit={handleSubmit} formData={formData} handleChange={handleChange} id={params.deckId} />
                 </div>
             </div>
 

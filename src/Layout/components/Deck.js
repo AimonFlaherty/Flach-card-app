@@ -13,13 +13,15 @@ function Deck({data}){
         }
         
     }
+    
     return(
         <div className="card">
-            <div className="card-body">
-                <h5 className="card-title">
-                    {data.name}
-                    
-                </h5> 
+            <div className="card-body ">
+                <div className="d-flex justify-content-between ">
+                    <h5 className="card-title">{data.name}</h5>
+                    <p className="text-secondary">{data.cards.length} cards</p>
+                </div>
+                 
                 <p>{data.description}</p>
                 <div className="container">
                     <button className="btn btn-secondary" onClick={()=>history.push(`/decks/${data.id}`)}>

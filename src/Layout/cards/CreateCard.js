@@ -3,14 +3,15 @@ import {useState, useEffect} from "react";
 import {useHistory, useParams, useRouteMatch} from "react-router-dom";
 import { createCard, readDeck } from "../../utils/api";
 import BannerPath from "../components/BannerPath";
+import Form from "../components/Form";
 
 function CreateCard(){
     const history = useHistory();
     const params = useParams();
     const {url} = useRouteMatch();
     const initialState ={
-        front: "",
-        back: "",
+        front: "front",
+        back: "back",
         deckId: params.deckId
     }
     const [formData, setFormData] = useState(initialState);
@@ -30,8 +31,8 @@ function CreateCard(){
     useEffect(()=>{
         async function loadDeck(){
             try{
-                const data = await readDeck(params.deckId);
-                setDeck(data);
+                //const data = await readDeck(params.deckId);
+                setDeck(await readDeck(params.deckId));
             }
             catch(error){
                 console.log("Abort error");
@@ -63,44 +64,7 @@ function CreateCard(){
             <div className="container">
                 <div className="row"> <h1>Add Card</h1> </div>
                 <div className="row">
-                    <form className="w-100" onSubmit={handleSubmit}>
-                        <div className="form-group">
-                            <label>
-                                Front
-                            </label>
-                            <textarea 
-                                className="form-control"
-                                name="front"
-                                rows="2"
-                                onChange={handleChange}
-                                value={formData.front}
-                                placeholder="front side of card"
-                            ></textarea>
-                        </div>
-                        
-                        <div className="form-group">
-                            <label>
-                                Back
-                            </label>
-                            <textarea
-                                className="form-control"
-                                name="back"
-                                rows="2"
-                                onChange={handleChange}
-                                value={formData.back}
-                                placeholder="back side of card"
-                            ></textarea>
-                        </div>
-                        
-                        <button 
-                            type="button" 
-                            className="btn btn-secondary"
-                            onClick={()=> history.push(`/decks/${params.deckId}`)}
-                        >
-                            Done
-                        </button>
-                        <button type="submit" className="btn btn-primary">Save</button>
-                    </form>
+                    <Form handleSubmit={handleSubmit} formData={formData} handleChange={handleChange} id={params.deckId}/>
                 </div>
             </div>
         </React.Fragment>
